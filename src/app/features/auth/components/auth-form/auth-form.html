@@ -1,0 +1,46 @@
+<div id="auth-form-wrapper">
+    <div id="title">
+        <img id="logo" src="assets/images/logo.png" alt="PetManager Logo">
+        <h1>PetManager</h1>
+    </div>
+
+      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <!-- Input: E-Mail -->
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>E-Mail-Adresse</mat-label>
+          <input matInput type="email" formControlName="email">
+          <mat-icon matIconPrefix>mail</mat-icon>
+        </mat-form-field>
+        <!-- Input: Password -->
+        <mat-form-field appearance="outline">
+          <mat-label>Passwort</mat-label>
+          <mat-icon matIconPrefix>lock</mat-icon>
+          <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password">
+          <button
+            type="button"
+            matIconButton
+            matSuffix
+            (click)="togglePassword()"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide()"
+          >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          </mat-form-field>
+
+          @if(isLoading()) {
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          }
+          <!-- Send-button -->
+          <button id="send-button" matButton="filled" color="primary" type="submit" [disabled]="isLoading()">
+            @if (isLoading()) {
+              Wird angemeldet …
+            } @else {
+              Anmelden
+            }
+          </button>
+          <!-- TODO: implement logic for resetting password and add a registration button -->
+          <p id="forgot-password">Passwort vergessen?</p>
+      </form>
+</div>
+

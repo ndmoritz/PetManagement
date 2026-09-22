@@ -1,3 +1,23 @@
 import { Routes } from '@angular/router';
+import { Login } from './features/auth/pages/login/login';
+import { Pets } from './features/pets/pages/pets';
+import { authGuard } from './features/auth/auth.guard';
 
-export const routes: Routes = [];
+
+export const routes: Routes = [
+    {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+    },    
+    {
+        path: 'login',
+        component: Login
+    },
+    {
+        path: 'pets',
+        component: Pets,
+        canActivate: [authGuard]
+    },
+    
+];
