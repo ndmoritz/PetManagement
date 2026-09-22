@@ -4,23 +4,23 @@
         <h1>PetManager</h1>
     </div>
 
-      <form class="auth-form" (ngSubmit)="login()">
-        <!-- Input: Username -->
+      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <!-- Input: E-Mail -->
         <mat-form-field appearance="outline" floatLabel="always">
-          <mat-label>Benutzername</mat-label>
-          <input matInput type="text" class="example-right-align"/>
-          <mat-icon matIconPrefix>person</mat-icon>
+          <mat-label>E-Mail-Adresse</mat-label>
+          <input matInput type="email" formControlName="email">
+          <mat-icon matIconPrefix>mail</mat-icon>
         </mat-form-field>
         <!-- Input: Password -->
         <mat-form-field appearance="outline">
           <mat-label>Passwort</mat-label>
           <mat-icon matIconPrefix>lock</mat-icon>
-          <input matInput [type]="hide() ? 'password' : 'text'" />
+          <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password">
           <button
             type="button"
             matIconButton
             matSuffix
-            (click)="clickEvent($event)"
+            (click)="togglePassword()"
             [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide()"
           >
@@ -39,7 +39,7 @@
               Anmelden
             }
           </button>
-          <p>oder</p>
+          <!-- TODO: implement logic for resetting password and add a registration button -->
           <p id="forgot-password">Passwort vergessen?</p>
       </form>
 </div>
