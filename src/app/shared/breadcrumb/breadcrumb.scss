@@ -1,0 +1,45 @@
+#breadcrumb-wrapper {
+    width: 100vw;
+    background-color: var(--color-primary);
+    height: 80px;
+}
+
+.three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  height: 100%;
+  padding: 20px;
+}
+
+.three-columns div {
+    color: white;
+    align-self: center;
+    display: flex;
+}
+
+#left {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#mid {
+    justify-self: center;
+}
+
+#right {
+    justify-self: end;
+}
+
+#logo {
+    width: 50px;
+}
+
+mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+}
+
