@@ -36,8 +36,8 @@ export class AuthForm {
     this.hide.update(hidden => !hidden);
   }
 
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this.snackBar.open(message, undefined, {duration: 3000});
   }
 
   async login(): Promise<void> {
@@ -61,7 +61,7 @@ export class AuthForm {
       if (error) {
         const message = 'E-Mail-Adresse oder Passwort ist nicht korrekt.';
         this.loginError.set(message);
-        this.openSnackBar(message, "schließen");
+        this.openSnackBar(message);
         return;
       }
       // Otherwise navigate to startscreen
@@ -69,9 +69,13 @@ export class AuthForm {
     } catch (error) {
       const message = "Die Anmeldung ist momentan nicht möglich";
       this.loginError.set(message);
-      this.openSnackBar(message, "Schließen");
+      this.openSnackBar(message);
     } finally {
       this.isLoading.set(false);
     }
+  }
+
+  async resetPassword() {
+    this.openSnackBar("ToDo: Noch zu implementieren");
   }
 }
