@@ -13,9 +13,13 @@
 }
 
 .three-columns div {
-    color: white;
+    color: var(--color-white);
     align-self: center;
     display: flex;
+}
+
+#logo {
+    width: 50px;
 }
 
 #left {
@@ -33,13 +37,15 @@
     justify-self: end;
 }
 
-#logo {
-    width: 50px;
+#right button {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    color: white;
 }
 
-mat-icon {
+#right button mat-icon {
     font-size: 48px;
     width: 48px;
     height: 48px;
 }
-
