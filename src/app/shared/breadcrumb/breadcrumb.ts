@@ -3,7 +3,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { SupabaseService } from '../../core/supabase/supabase.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -12,8 +13,26 @@ import { Router } from '@angular/router';
   styleUrl: './breadcrumb.scss',
 })
 export class Breadcrumb {
+  page = "";
   private readonly supabaseService = inject(SupabaseService);
   private readonly router = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+        let route = this.activatedRoute;
+
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+
+        this.page = route.snapshot.data['breadcrumb'];
+      });
+  }
 
   async logout(): Promise<void> {
     await this.supabaseService.signOut();

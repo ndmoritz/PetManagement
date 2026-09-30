@@ -37,6 +37,14 @@
     justify-self: end;
 }
 
+#right:hover {
+    transform: scale(1.1);
+}
+
+#mid:hover, #left:hover {
+    cursor: pointer;
+}
+
 #right button {
     width: 48px;
     height: 48px;
