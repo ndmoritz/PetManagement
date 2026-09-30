@@ -26,22 +26,34 @@ export const routes: Routes = [
             {
                 path: 'pets',
                 component: Pets,
-                canActivate: [authGuard]
+                canActivate: [authGuard],
+                data: {
+                    breadcrumb: 'Haustiere'
+                }
             },
             {
                 path: 'appointments',
                 component: Appointments,
-                canActivate: [authGuard]
+                canActivate: [authGuard],
+                data: {
+                    breadcrumb: 'Termine'
+                }
             },
             {
                 path: 'costs',
                 component: Costs,
-                canActivate: [authGuard]
+                canActivate: [authGuard],
+                data: {
+                    breadcrumb: 'Kosten'
+                }
             },
             {
                 path: 'settings',
                 component: Settings,
-                canActivate: [authGuard]
+                canActivate: [authGuard],
+                data: {
+                    breadcrumb: 'Einstellungen'
+                }
             }
         ]
     },
