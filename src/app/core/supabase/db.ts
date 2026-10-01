@@ -1,10 +1,11 @@
-const dbTables = {
+export const dbTables = {
     pets: "pets",
 }
 
-const dbColumns = {
+export const dbColumns = {
     id: "id",
     name: "name",
+    type: "type",
     birthdate: "birth_date",
     color: "color",
     gender: "gender",

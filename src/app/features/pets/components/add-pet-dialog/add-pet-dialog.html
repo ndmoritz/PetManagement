@@ -4,37 +4,48 @@
 
     <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="pet.name">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-        <mat-label>Geburtsdatum</mat-label>
-        <input matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Farbe</mat-label>
-        <input matInput>
+        <mat-label>Art</mat-label>
+        <mat-select [(ngModel)]="pet.type">
+            <mat-option value="dog">Hund</mat-option>
+            <mat-option value="cat">Katze</mat-option>
+        </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Geschlecht</mat-label>
-        <input matInput>
+        <mat-select [(ngModel)]="pet.gender">
+            <mat-option value="male">Männlich</mat-option>
+            <mat-option value="female">Weiblich</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Geburtsdatum</mat-label>
+        <input matInput type="date" [(ngModel)]="pet.birth_date">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Chipnummer</mat-label>
+        <input matInput [(ngModel)]="pet.chipnumber">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Farbe</mat-label>
+        <input matInput [(ngModel)]="pet.color">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Rasse</mat-label>
-        <input matInput>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label>Chipnummer</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="pet.race">
     </mat-form-field>
 
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
+<mat-dialog-actions>
     <button mat-button (click)="cancel()">
         Abbrechen
     </button>
