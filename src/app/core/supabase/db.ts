@@ -4,6 +4,7 @@ export const dbTables = {
 
 export const dbColumns = {
     id: "id",
+    userId: "user_id",
     name: "name",
     type: "type",
     birthdate: "birth_date",

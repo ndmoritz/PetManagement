@@ -14,59 +14,21 @@
     </div>
 
     <div id="pet-card-layout">
-        <app-pet-card
-        name="BamBam"
-        imageUrl="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg?utm_source=de.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
-        age="4 Jahre"
-        weight="3,4 Kg"
-        nextCheckup="23.11.2026"
-        costs="102,46 €">
-    </app-pet-card>
+        <!-- Example for upcoming dynamic implementation -->
+        <!-- <app-pet-card
+            name="BamBam"
+            imageUrl="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg?utm_source=de.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+            age="4 Jahre"
+            weight="3,4 Kg"
+            nextCheckup="23.11.2026"
+            costs="102,46 €">
+        </app-pet-card> -->
 
-    <app-pet-card
-        name="Beezel"
-        imageUrl="https://cdn.pixabay.com/photo/2020/03/23/08/45/cat-4959941_1280.jpg"
-        age="7 Jahre"
-        weight="5,2 Kg"
-        nextCheckup="15.08.2026"
-        costs="84,20 €">
-    </app-pet-card>
-
-    <app-pet-card
-        name="Tiger"
-        imageUrl="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1280px-Cat03.jpg?utm_source=de.wiktionary.org&utm_campaign=index&utm_content=thumbnail"
-        age="7 Jahre"
-        weight="5,2 Kg"
-        nextCheckup="15.08.2026"
-        costs="84,20 €">
-    </app-pet-card>
-    <app-pet-card
-        name="BamBam"
-        imageUrl="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg?utm_source=de.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
-        age="4 Jahre"
-        weight="3,4 Kg"
-        nextCheckup="23.11.2026"
-        costs="102,46 €">
-    </app-pet-card>
-
-    <app-pet-card
-        name="Beezel"
-        imageUrl="https://cdn.pixabay.com/photo/2020/03/23/08/45/cat-4959941_1280.jpg"
-        age="7 Jahre"
-        weight="5,2 Kg"
-        nextCheckup="15.08.2026"
-        costs="84,20 €">
-    </app-pet-card>
-
-    <app-pet-card
-        name="Tiger"
-        imageUrl="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1280px-Cat03.jpg?utm_source=de.wiktionary.org&utm_campaign=index&utm_content=thumbnail"
-        age="7 Jahre"
-        weight="5,2 Kg"
-        nextCheckup="15.08.2026"
-        costs="84,20 €">
-    </app-pet-card>
-
+        @for (pet of pets; track pet.id) {
+            <app-pet-card
+                [name]="pet.name">
+            </app-pet-card>
+        }
     </div>
 
     <div id="add-button" (click)="openAddPetDialog()">

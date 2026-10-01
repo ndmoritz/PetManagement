@@ -6,6 +6,8 @@ import { MatIcon } from '@angular/material/icon';
 import { PetCard } from '../components/pet-card/pet-card';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { AddPetDialog } from '../components/add-pet-dialog/add-pet-dialog';
+import { Pet } from '../models/pets.model';
+import { PetsService } from '../services/pets.service';
 
 @Component({
   selector: 'app-pets',
@@ -16,7 +18,22 @@ import { AddPetDialog } from '../components/add-pet-dialog/add-pet-dialog';
 })
 export class Pets {
   sort = "arrow_downward"
+  pets: Pet[] = [];
   private readonly dialog = inject(MatDialog);
+  private readonly petsService = inject(PetsService);
+
+  ngOnInit(): void {
+    this.loadPets();
+  }
+
+  async loadPets(): Promise<void> {
+    try {
+      this.pets = await this.petsService.getPets();
+      console.log(this.pets);
+    } catch (error) {
+      console.error('Fehler beim Laden der Haustiere:', error);
+    }
+  }
 
   sortPets(): void {
     if(this.sort === "arrow_downward") {
