@@ -1,5 +1,6 @@
 export const dbTables = {
     pets: "pets",
+    weight: "weight"
 }
 
 export const dbColumns = {
@@ -11,5 +12,8 @@ export const dbColumns = {
     color: "color",
     gender: "gender",
     race: "race",
-    chipnumber: "chipnumber"
+    chipnumber: "chipnumber",
+    weight: "weight",
+    petId: "pet_id",
+    createdAt: "created_at"
 }

@@ -5,7 +5,7 @@
             <mat-checkbox>Hunde</mat-checkbox>
         </div>
         <div id="mid">
-            <span>4 von 6 Datensätze aktiv</span>
+            <span>{{ pets().length}} von {{ pets().length}} Datensätze aktiv</span>
         </div>
         <div id="right" (click)="sortPets()">
             <span>Alphabetische Sortierung</span>
@@ -24,9 +24,9 @@
             costs="102,46 €">
         </app-pet-card> -->
 
-        @for (pet of pets; track pet.id) {
-            <app-pet-card
-                [name]="pet.name">
+        @for (pet of pets(); track pet.id) {
+                <app-pet-card
+                [name]="pet.name" [birth_date]="pet.birth_date">
             </app-pet-card>
         }
     </div>

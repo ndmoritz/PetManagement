@@ -7,19 +7,19 @@
             <mat-card-content>
                 <div class="info-content">
                     <mat-icon>cake</mat-icon>
-                    <span>{{ age }}</span>
+                    <span>{{ birth_date || '-' }}</span>
                 </div>
                 <div class="info-content">
                     <mat-icon>fitness_center</mat-icon>
-                    <span>{{ weight }}</span>
+                    <span>{{ weight || '-' }}</span>
                 </div>
                 <div class="info-content">
                     <mat-icon>healing</mat-icon>
-                    <span>{{ nextCheckup }}</span>
+                    <span>{{ nextCheckup || '-' }}</span>
                 </div>
                 <div class="info-content">
                     <mat-icon>wallet</mat-icon>
-                    <span>{{ costs }}</span>
+                    <span>{{ costs || '-' }}</span>
                 </div>
             </mat-card-content>
         </mat-card>

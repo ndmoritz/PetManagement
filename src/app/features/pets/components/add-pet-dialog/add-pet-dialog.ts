@@ -8,6 +8,7 @@ import { PetsService } from '../../services/pets.service';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Weight } from '../../../weight/models/weight.model';
 
 @Component({
   selector: 'app-add-pet-dialog',
@@ -30,6 +31,12 @@ export class AddPetDialog {
   chipnumber: '',
 };
 
+weight: Weight = {
+  pet_id: '',
+  weight: '',
+  user_id: ''
+};
+
   constructor(
     private readonly dialogRef: MatDialogRef<AddPetDialog>
   ) {}
@@ -40,7 +47,7 @@ export class AddPetDialog {
 
   async save(): Promise<void> {
     try {
-      await this.petsService.createPet(this.pet);
+      await this.petsService.createPet(this.pet, this.weight);
       this.dialogRef.close(this.pet);
     } catch(error) {
       console.error('Fehler beim Erstellen des Tieres:', error);
