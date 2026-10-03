@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -9,10 +9,11 @@ import { AddPetDialog } from '../components/add-pet-dialog/add-pet-dialog';
 import { Pet } from '../models/pets.model';
 import { PetsService } from '../services/pets.service';
 import { Weight } from '../../weight/models/weight.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pets',
-  imports: [MatCardModule, MatButtonModule, MatIcon, MatCheckboxModule, PetCard, MatDialogModule],
+  imports: [MatCardModule, MatButtonModule, MatIcon, MatCheckboxModule, PetCard, MatDialogModule, FormsModule],
   templateUrl: './pets.html',
   styleUrl: './pets.scss',
   standalone: true
@@ -22,8 +23,17 @@ export class Pets {
   pets = signal<Pet[]>([]);
   weights = signal<Weight[]>([]);
   sortAscending = true;
+  catFilterOn = signal(true);
+  dogFilterOn = signal(true);
   private readonly dialog = inject(MatDialog);
   private readonly petsService = inject(PetsService);
+
+  filteredPets = computed(() =>
+    this.pets().filter(pet =>
+      (pet.type === 'cat' && this.catFilterOn()) ||
+      (pet.type === 'dog' && this.dogFilterOn())
+    )
+  );
 
   async ngOnInit(): Promise<void> {
     await this.loadPets(this.sortAscending);

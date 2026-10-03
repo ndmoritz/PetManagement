@@ -1,11 +1,11 @@
 <div id="content">
     <div id="filter-wrapper">
         <div id="left">
-            <mat-checkbox>Katzen</mat-checkbox>
-            <mat-checkbox>Hunde</mat-checkbox>
+            <mat-checkbox [checked]="catFilterOn()" (change)="catFilterOn.set($event.checked)">Katzen</mat-checkbox>
+            <mat-checkbox [checked]="dogFilterOn()" (change)="dogFilterOn.set($event.checked)">Hunde</mat-checkbox>
         </div>
         <div id="mid">
-            <span>{{ pets().length}} von {{ pets().length}} Datensätze aktiv</span>
+            <span>{{ filteredPets().length }} von {{ pets().length }} Datensätze aktiv</span>
         </div>
         <div id="right" (click)="sortPets()">
             <span>Alphabetische Sortierung</span>
@@ -24,10 +24,8 @@
             costs="102,46 €">
         </app-pet-card> -->
 
-        @for (pet of pets(); track pet.id) {
-                <app-pet-card
-                [name]="pet.name" [birth_date]="pet.birth_date">
-            </app-pet-card>
+        @for (pet of filteredPets(); track pet.id) {
+            <app-pet-card [name]="pet.name" [birth_date]="pet.birth_date"></app-pet-card>
         }
     </div>
 
