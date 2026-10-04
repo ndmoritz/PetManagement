@@ -34,6 +34,10 @@ export class Breadcrumb {
       });
   }
 
+  async navigateToStartscreen(): Promise<void> {
+    await this.router.navigate(['/pets']);
+  }
+
   async logout(): Promise<void> {
     await this.supabaseService.signOut();
     await this.router.navigate(['/login']);

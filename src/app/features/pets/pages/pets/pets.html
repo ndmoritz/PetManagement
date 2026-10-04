@@ -25,7 +25,7 @@
         </app-pet-card> -->
 
         @for (pet of filteredPets(); track pet.id) {
-            <app-pet-card [name]="pet.name" [birth_date]="pet.birth_date"></app-pet-card>
+            <app-pet-card (click)="openPet(pet.id!)" [name]="pet.name" [birth_date]="pet.birth_date"></app-pet-card>
         }
     </div>
 

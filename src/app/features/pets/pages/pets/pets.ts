@@ -3,13 +3,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatIcon } from '@angular/material/icon';
-import { PetCard } from '../components/pet-card/pet-card';
+import { PetCard } from '../../components/pet-card/pet-card';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { AddPetDialog } from '../components/add-pet-dialog/add-pet-dialog';
-import { Pet } from '../models/pets.model';
-import { PetsService } from '../services/pets.service';
-import { Weight } from '../../weight/models/weight.model';
+import { AddPetDialog } from '../../components/add-pet-dialog/add-pet-dialog';
+import { Pet } from '../../models/pets.model';
+import { PetsService } from '../../services/pets.service';
+import { Weight } from '../../../weight/models/weight.model';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pets',
@@ -25,6 +26,7 @@ export class Pets {
   sortAscending = true;
   catFilterOn = signal(true);
   dogFilterOn = signal(true);
+  private readonly router = inject(Router);
   private readonly dialog = inject(MatDialog);
   private readonly petsService = inject(PetsService);
 
@@ -69,6 +71,10 @@ export class Pets {
       this.sortAscending = true;
       this.loadPets(this.sortAscending);
     }
+  }
+
+  async openPet(petId: string): Promise<void> {
+    await this.router.navigate(['/pets/core-data', petId]);
   }
 
   openAddPetDialog(): void {
