@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 import { Login } from './features/auth/pages/login/login';
-import { Pets } from './features/pets/pages/pets';
+import { Pets } from './features/pets/pages/pets/pets';
 import { authGuard } from './features/auth/auth.guard';
 import { Appointments } from './features/appointments/appointments';
 import { Costs } from './features/costs/costs';
 import { Settings } from './features/settings/settings';
 import { AppLayout } from './layout/app-layout/app-layout';
+import { CoreData } from './features/pets/pages/core-data/core-data';
 
 
 export const routes: Routes = [
@@ -29,6 +30,14 @@ export const routes: Routes = [
                 canActivate: [authGuard],
                 data: {
                     breadcrumb: 'Haustiere'
+                }
+            },
+            {
+                path: 'pets/core-data/:id',
+                component: CoreData,
+                canActivate: [authGuard],
+                data: {
+                    breadcrumb: 'Stammdaten'
                 }
             },
             {
