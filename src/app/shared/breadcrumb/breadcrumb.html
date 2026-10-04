@@ -1,0 +1,26 @@
+<div id="breadcrumb-wrapper">
+    <div class="three-columns">
+        <div (click)="navigateToStartscreen()" id="left">
+            <img id="logo" src="assets/images/logo.png" alt="PetManager Logo">
+            <h1>PetManager</h1>    
+        </div>
+        <div id="mid"><h2>{{ page }}</h2></div>
+        <div id="right">
+            <button
+                mat-icon-button
+                [matMenuTriggerFor]="accountMenu"
+                aria-label="Account-Menü öffnen"
+            >
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Popover for logout -->
+<mat-menu #accountMenu="matMenu">
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Ausloggen</span>
+    </button>
+</mat-menu>

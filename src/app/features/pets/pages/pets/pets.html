@@ -1,0 +1,36 @@
+<div id="content">
+    <div id="filter-wrapper">
+        <div id="left">
+            <mat-checkbox [checked]="catFilterOn()" (change)="catFilterOn.set($event.checked)">Katzen</mat-checkbox>
+            <mat-checkbox [checked]="dogFilterOn()" (change)="dogFilterOn.set($event.checked)">Hunde</mat-checkbox>
+        </div>
+        <div id="mid">
+            <span>{{ filteredPets().length }} von {{ pets().length }} Datensätze aktiv</span>
+        </div>
+        <div id="right" (click)="sortPets()">
+            <span>Alphabetische Sortierung</span>
+            <mat-icon>{{ sort }}</mat-icon>
+        </div>
+    </div>
+
+    <div id="pet-card-layout">
+        <!-- Example for upcoming dynamic implementation -->
+        <!-- <app-pet-card
+            name="BamBam"
+            imageUrl="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg?utm_source=de.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+            age="4 Jahre"
+            weight="3,4 Kg"
+            nextCheckup="23.11.2026"
+            costs="102,46 €">
+        </app-pet-card> -->
+
+        @for (pet of filteredPets(); track pet.id) {
+            <app-pet-card (click)="openPet(pet.id!)" [name]="pet.name" [birth_date]="pet.birth_date"></app-pet-card>
+        }
+    </div>
+
+    <div id="add-button" (click)="openAddPetDialog()">
+        <mat-icon>add_circle</mat-icon>
+    </div>
+</div>
+

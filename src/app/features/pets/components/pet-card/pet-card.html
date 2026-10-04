@@ -1,0 +1,26 @@
+<div id="pet-card-wrapper">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>{{ name }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="imageUrl" [alt]="name">
+            <mat-card-content>
+                <div class="info-content">
+                    <mat-icon>cake</mat-icon>
+                    <span>{{ birth_date || '-' }}</span>
+                </div>
+                <div class="info-content">
+                    <mat-icon>fitness_center</mat-icon>
+                    <span>{{ weight || '-' }}</span>
+                </div>
+                <div class="info-content">
+                    <mat-icon>healing</mat-icon>
+                    <span>{{ nextCheckup || '-' }}</span>
+                </div>
+                <div class="info-content">
+                    <mat-icon>wallet</mat-icon>
+                    <span>{{ costs || '-' }}</span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>

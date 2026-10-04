@@ -1,0 +1,59 @@
+#breadcrumb-wrapper {
+    width: 100vw;
+    background-color: var(--color-primary);
+    height: 80px;
+}
+
+.three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  height: 100%;
+  padding: 20px;
+}
+
+.three-columns div {
+    color: var(--color-white);
+    align-self: center;
+    display: flex;
+}
+
+#logo {
+    width: 50px;
+}
+
+#left {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#mid {
+    justify-self: center;
+}
+
+#right {
+    justify-self: end;
+}
+
+#right:hover {
+    transform: scale(1.1);
+}
+
+#mid:hover, #left:hover {
+    cursor: pointer;
+}
+
+#right button {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    color: white;
+}
+
+#right button mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+}

@@ -19,6 +19,10 @@ export class SupabaseService {
     this.supabase = createClient(environment.supabaseUrl, environment.supabasePublishableKey)
   }
 
+  get client(): SupabaseClient {
+    return this.supabase;
+  }
+
   async getUser(): Promise<User | null> {
     const { data, error } = await this.supabase.auth.getUser()
     if (error) {
