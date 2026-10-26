@@ -15,10 +15,15 @@ export class PetCard {
   @Input() weight!: string;
   @Input() nextCheckup!: string;
   @Input() costs!: string;
+  @Input() type!: string;
   
   ngOnInit() {
     if(this.imageUrl === "" || this.imageUrl === undefined) {
-      this.imageUrl = "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg?utm_source=de.wikipedia.org&utm_campaign=index&utm_content=thumbnail";
+        if(this.type === "dog") {
+          this.imageUrl = "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg";
+        } else {
+          this.imageUrl = "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg?utm_source=de.wikipedia.org&utm_campaign=index&utm_content=thumbnail";
+        }
     }
   }
 

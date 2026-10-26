@@ -2,10 +2,11 @@ import { Component, inject, Input, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PetsService } from '../../services/pets.service';
 import { Pet } from '../../models/pets.model';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-core-data',
-  imports: [],
+  imports: [MatIcon],
   templateUrl: './core-data.html',
   styleUrl: './core-data.scss',
 })
@@ -17,10 +18,12 @@ export class CoreData {
   pet = signal<Pet | null>(null);
 
   async ngOnInit(): Promise<void> {
+    const id = this.route.snapshot.paramMap.get('id');
 
-    if(this.route.snapshot.paramMap.get('id') === null || this.route.snapshot.paramMap.get('id') === undefined ) {
+    if (!id) {
       return;
-    } else {
     }
+
+    this.petId = id;
   }
 }

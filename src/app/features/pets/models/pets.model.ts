@@ -5,8 +5,8 @@ export interface Pet {
   type: string,
   birth_date: string,
   color?: string,
-  gender?: string,
+  gender: string,
   race?: string,
   chipnumber?: string,
-  imageUrl?: string;
+  imageUrl?: string
 }
